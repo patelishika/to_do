@@ -13,6 +13,16 @@ const App = () => {
     setTodo('');
   };
 
+  const deleteTodo = (t) => {
+    setTodos(
+      todos.filter((temp) => {
+        if (temp != t) {
+          return temp;
+        }
+      })
+    );
+  };
+
   return (
     <>
       <div className='flex h-screen w-screen bg-purple-300 justify-center items-center rounded-lg'>
@@ -28,7 +38,7 @@ const App = () => {
               onChange={inputHandler}
             />
             <button
-              className='border-2 py-2 px-6 rounded-md bg-white ml-2'
+              className='border-2 py-2 px-6 rounded-md border-gray-300 ml-2'
               onClick={AddTodo}>
               Add
             </button>
@@ -37,9 +47,18 @@ const App = () => {
             {todos.map((t) => {
               return (
                 <>
-                  <div className='flex h-[10%] w-[100%]  justify-around items-center mt-1'>
-                    <div className='flex h-[100%] w-[85%] border-2 bg-white border-black rounded-md'>
+                  <div className='flex h-[12%] w-[100%]  justify-around items-center mt-1'>
+                    <div className='flex h-[100%] w-[85%] border-2 border-gray-300 rounded-md justify-between items-center'>
                       <h1 className='text-2xl'>{t}</h1>
+                      <div className='flex h-[85%] w-[10%]  justify-end '>
+                        <button
+                          className='flex border-2 border-gray-300 px-3 rounded-full justify-center items-center'
+                          onClick={() => {
+                            deleteTodo(t);
+                          }}>
+                          x
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </>
