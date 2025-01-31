@@ -11,6 +11,9 @@ const App = () => {
   const AddTodo = () => {
     setTodos([...todos, { id: Date.now(), text: todo }]);
     setTodo('');
+    if (todo == '') {
+      alert('please enter the todo');
+    }
   };
 
   const deleteTodo = (t) => {
@@ -50,7 +53,7 @@ const App = () => {
                   key={t.id}
                   className=' p-5 mt-3 flex h-[10%] w-[85%] border-2 border-gray-300 rounded-md justify-between items-center'>
                   <h1 className='text-2xl'>{t.text}</h1>
-                  <div className='flex h-[85%] w-[10%] justify-end items-center '>
+                  <div className='flex h-[85%] w-[15%] justify-end items-center '>
                     <button
                       className='flex border-2 border-gray-300 h-5 w-5 p-4 text-center rounded-full justify-center items-center'
                       onClick={() => {
