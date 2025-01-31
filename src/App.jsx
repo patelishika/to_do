@@ -16,13 +16,8 @@ const App = () => {
   const deleteTodo = (t) => {
     setTodos(
       todos.filter((temp) => {
-<<<<<<< HEAD
         if (temp != t) {
           return temp;
-=======
-        if (temp == t) {
-          return temp.todos;
->>>>>>> 723b86fb8212ea0d6061d53f2ee5b1c81c638566
         }
       })
     );
