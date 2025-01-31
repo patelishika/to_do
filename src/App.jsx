@@ -9,14 +9,14 @@ const App = () => {
   };
 
   const AddTodo = () => {
-    setTodos([...todos, todo]);
+    setTodos([...todos, { id: Date.now(), text: todo }]);
     setTodo('');
   };
 
   const deleteTodo = (t) => {
     setTodos(
       todos.filter((temp) => {
-        if (temp != t) {
+        if (temp.id != t.id) {
           return temp;
         }
       })
@@ -46,22 +46,22 @@ const App = () => {
           <div className='flex h-[70%] w-[100%]  flex-col'>
             {todos.map((t) => {
               return (
-                <>
-                  <div className='flex h-[12%] w-[100%]  justify-around items-center mt-1'>
-                    <div className='flex h-[100%] w-[85%] border-2 border-gray-300 rounded-md justify-between items-center'>
-                      <h1 className='text-2xl'>{t}</h1>
-                      <div className='flex h-[85%] w-[10%]  justify-end '>
-                        <button
-                          className='flex border-2 border-gray-300 px-3 rounded-full justify-center items-center'
-                          onClick={() => {
-                            deleteTodo(t);
-                          }}>
-                          x
-                        </button>
-                      </div>
+                <div
+                  key={t.id}
+                  className='flex h-[12%] w-[100%]  justify-around items-center mt-1'>
+                  <div className='flex h-[100%] w-[85%] border-2 border-gray-300 rounded-md justify-between items-center'>
+                    <h1 className='text-2xl'>{t.text}</h1>
+                    <div className='flex h-[85%] w-[10%]  justify-end '>
+                      <button
+                        className='flex border-2 border-gray-300 px-3 rounded-full justify-center items-center'
+                        onClick={() => {
+                          deleteTodo(t);
+                        }}>
+                        x
+                      </button>
                     </div>
                   </div>
-                </>
+                </div>
               );
             })}
           </div>
