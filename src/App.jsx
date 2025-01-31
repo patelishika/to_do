@@ -17,7 +17,7 @@ const App = () => {
 
     if (editTodo) {
       setTodos(
-        todos.map((t) => (t.id === editTodo ? { ...todos, text: todo } : todos))
+        todos.map((t) => (t.id === editTodo ? { ...t, text: todo } : t))
       );
       setEditTodo(null);
     } else {
@@ -69,7 +69,7 @@ const App = () => {
                   key={t.id}
                   className=' p-5 mt-3 flex h-[10%] w-[85%] border-2 border-gray-300 rounded-md justify-between items-center'>
                   <h1 className='text-2xl'>{t.text}</h1>
-                  <div className='flex h-[85%] w-[12%] justify-around items-center '>
+                  <div className='flex h-[85%] w-[18%] justify-around items-center '>
                     <button
                       className='flex border-2 border-gray-300 h-5 w-5 p-4 text-center rounded-full justify-center items-center'
                       onClick={() => {
@@ -83,6 +83,9 @@ const App = () => {
                         editHandler(t);
                       }}>
                       +
+                    </button>
+                    <button className='flex border-2 border-gray-300 h-5 w-5 p-4 text-center rounded-full justify-center items-center'>
+                      -
                     </button>
                   </div>
                 </div>
